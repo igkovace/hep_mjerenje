@@ -1,5 +1,6 @@
 {
   "name": "HEP ODS Mjerenje",
-  "content_in_root": false,
+  "hide_default_branch": false
+  "content_in_root": true,
   "render_readme": true
 }
