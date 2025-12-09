@@ -1,7 +1,5 @@
 {
   "name": "HEP ODS Mjerenje",
-  "zip_release": true,
-  "filename": "hep_mjerenje.zip",
   "render_readme": true,
   "hide_default_branch": true
 }
