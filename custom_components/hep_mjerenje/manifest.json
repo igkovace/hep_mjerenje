@@ -1,13 +1,14 @@
 {
   "domain": "hep_mjerenje",
-  "name": "HEP ODS Mjerenje",
+  "name": "hep_mjerenje",
   "version": "0.2.7",
-  "documentation": "https://github.com/igkovace/hep-ods-mjerenje#readme",
+  "documentation": "https://github.com/igkovace/hep-ods-mjerenje",
   "issue_tracker": "https://github.com/igkovace/hep-ods-mjerenje/issues",
   "requirements": [],
   "codeowners": [
     "@igkovace"
   ],
-  "iot_class": "cloud_polling",
+  "dependencies": ["http"],
+  "iot_class": "local_polling",
   "config_flow": true
 }
