@@ -1,6 +1,7 @@
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/igkovace/hep-ods-mjerenje/)
-![GitLeaks](https://img.shields.io/badge/protected%20by-gitleaks-blue)
-[![License][license-shield]](LICENSE.md)
+![GitHub](https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white)
+![Python](https://img.shields.io/badge/Python-14354C?style=flat&logo=python&logoColor=white)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/igkovace/hep-ods-mjerenje)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # HEP ODS Mjerenje – Home Assistant Custom Integration
 
