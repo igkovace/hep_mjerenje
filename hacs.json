@@ -1,4 +1,7 @@
 {
   "name": "HEP ODS Mjerenje",
-  "render_readme": true
+  "zip_release": true,
+  "filename": "v0.2.7.zip",
+  "render_readme": true,
+  "hide_default_branch": true
 }
