@@ -89,5 +89,8 @@ logger:
     custom_components.hep_mjerenje.api: debug
     custom_components.hep_mjerenje.coordinator: debug
 
+##Issues
+To be concluded
+
 ## License
 This project is licensed under the MIT License.
