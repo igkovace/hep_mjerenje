@@ -1,0 +1,16 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HEP ODS Mjerenje",
+        "description": "Unesite svoje podatke za prijavu i identifikatore mjernog mjesta",
+        "data": {
+          "username": "Korisni\u010dko ime ili e-mail",
+          "password": "Lozinka",
+          "oib": "OIB",
+          "omm": "OMM (10 znamenki)"
+        }
+      }
+    }
+  }
+}
