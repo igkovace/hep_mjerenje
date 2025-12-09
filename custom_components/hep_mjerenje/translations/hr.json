@@ -1,0 +1,45 @@
+{
+  "title": "HEP Mjerenje",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Povežite se na HEP Mjerenje",
+        "description": "Unesite pristupne podatke i identifikatore brojila.",
+        "data": {
+          "username": "Korisničko ime",
+          "password": "Lozinka",
+          "oib": "OIB",
+          "omm": "OMM",
+          "backfill_n_months": "Učitaj N mjeseci (početni uvoz)",
+          "reset_on_install": "Resetiraj ukupne vrijednosti pri prvoj instalaciji",
+          "sync_total_to_ytd": "Drži ukupni zbroj >= zbroj godine"
+        }
+      }
+    },
+    "options": {
+      "step": {
+        "init": {
+          "data": {
+            "date_column_index": "Indeks stupca datuma",
+            "time_column_index": "Indeks stupca vremena",
+            "kw_column_index": "Indeks stupca vrijednosti",
+            "date_format": "Format datuma",
+            "time_format": "Format vremena",
+            "value_is_energy": "Vrijednosti su već energija (kWh)",
+            "backfill_n_months": "Učitaj N mjeseci",
+            "reset_on_install": "Resetiraj ukupne vrijednosti pri prvoj instalaciji",
+            "sync_total_to_ytd": "Drži ukupni zbroj >= zbroj godine",
+            "influx_enabled": "Omogući InfluxDB izvoz",
+            "influx_url": "InfluxDB URL",
+            "influx_token": "InfluxDB Token",
+            "influx_org": "InfluxDB Org",
+            "influx_bucket": "InfluxDB Bucket",
+            "export_series_15m": "Izvoz serije 15 min",
+            "export_series_daily": "Izvoz dnevnog zbroja",
+            "export_series_monthly": "Izvoz mjesečnog zbroja"
+          }
+        }
+      }
+    }
+  }
+}

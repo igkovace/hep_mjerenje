@@ -1,0 +1,45 @@
+{
+  "title": "HEP Mjerenje",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to HEP Mjerenje",
+        "description": "Enter your portal credentials and meter identifiers.",
+        "data": {
+          "username": "Username",
+          "password": "Password",
+          "oib": "OIB",
+          "omm": "OMM",
+          "backfill_n_months": "Backfill N months (initial import)",
+          "reset_on_install": "Reset totals on first install",
+          "sync_total_to_ytd": "Keep lifetime total >= year-to-date"
+        }
+      }
+    },
+    "options": {
+      "step": {
+        "init": {
+          "data": {
+            "date_column_index": "Date column index",
+            "time_column_index": "Time column index",
+            "kw_column_index": "Value column index",
+            "date_format": "Date format",
+            "time_format": "Time format",
+            "value_is_energy": "Values are already energy (kWh)",
+            "backfill_n_months": "Backfill N months",
+            "reset_on_install": "Reset totals on first install",
+            "sync_total_to_ytd": "Keep lifetime total >= year-to-date",
+            "influx_enabled": "Enable InfluxDB export",
+            "influx_url": "InfluxDB URL",
+            "influx_token": "InfluxDB Token",
+            "influx_org": "InfluxDB Org",
+            "influx_bucket": "InfluxDB Bucket",
+            "export_series_15m": "Export 15-minute series",
+            "export_series_daily": "Export daily aggregate",
+            "export_series_monthly": "Export monthly aggregate"
+          }
+        }
+      }
+    }
+  }
+}
