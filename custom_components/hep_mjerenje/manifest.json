@@ -1,9 +1,9 @@
 {
   "domain": "hep_mjerenje",
-  "name": "hep_mjerenje",
+  "name": "HEP ODS Mjerenje",
   "version": "0.2.7",
-  "documentation": "https://github.com/igkovace/hep-ods-mjerenje",
-  "issue_tracker": "https://github.com/igkovace/hep-ods-mjerenje/issues",
+  "documentation": "https://github.com/igkovace/hep_mjerenje",
+  "issue_tracker": "https://github.com/igkovace/hep_mjerenje/issues",
   "requirements": [],
   "codeowners": [
     "@igkovace"
