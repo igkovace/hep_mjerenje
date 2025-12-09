@@ -1,0 +1,11 @@
+
+import_history:
+  name: Import history
+  description: Backfill totals by fetching specified months (MM.YYYY list)
+  fields:
+    months:
+      description: List of months to import, e.g., ["03.2023", "04.2023"]
+      example: ["03.2023", "04.2023", "05.2023"]
+      required: true
+      selector:
+        object:
