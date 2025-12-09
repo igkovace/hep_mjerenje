@@ -1,7 +1,7 @@
 {
   "domain": "hep_mjerenje",
   "name": "HEP ODS Mjerenje",
-  "version": "0.1.1",
+  "version": "0.2.7",
   "documentation": "https://mjerenje.hep.hr/mjerenja/index.html",
   "requirements": [],
   "codeowners": [

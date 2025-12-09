@@ -9,3 +9,26 @@ import_history:
       required: true
       selector:
         object:
+    force:
+      description: Import even if month(s) were already imported (may double-count)
+      default: false
+      selector:
+        boolean:
+import_years:
+  name: Import years
+  description: Backfill totals by fetching all months of given years
+  fields:
+    years:
+      description: List of years to import, e.g., ["2023", "2024"]
+      example: ["2023", "2024"]
+      required: true
+      selector:
+        object:
+    force:
+      description: Import even if months from these years were already imported (may double-count)
+      default: false
+      selector:
+        boolean:
+clear_import_cache:
+  name: Clear import cache
+  description: Clears the internal list of months already imported (does not modify totals)
