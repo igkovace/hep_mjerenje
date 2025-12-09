@@ -19,7 +19,7 @@ Installation of HACS (Recommended)
 3. Go to "Integrations" section
 4. Click ... button on top right and in menu select "Custom repositories"
 5. Add repository **https://github.com/igkovace/hep-ods-mjerenje** and select category "Integration"
-6. Search for "hep_mjerenje" and install it
+6. Search for "HEP ODS Mjerenje" and install it
 7. Restart Home Assistant
 
 ## 2. Manual Installation
