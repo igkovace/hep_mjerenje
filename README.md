@@ -4,7 +4,7 @@
 # HEP ODS Mjerenje – Home Assistant Custom Integration
 
 ## About
-This integration pulls 15‑minute power curves from the HEP ODS "Mjerenje" portal and exposes energy sensors suitable for Home Assistant Energy Dashboard.
+This integration pulls [HEP ODS Mjerenje](https://mjerenje.hep.hr/)'s API 15‑minute power curves from the HEP ODS "Mjerenje" portal and exposes energy sensors suitable for Home Assistant Energy Dashboard.
 
 ## Installation
 ## 1. Easy Mode (HACS)
