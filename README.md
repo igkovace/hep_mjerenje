@@ -71,7 +71,7 @@ Backfill totals with a list of months, e.g.:
 ```
 service: hep_mjerenje.import_history
 data:
-  months: ["03.2023", "04.2023", "05.2023"]
+  months: ["09.2025, "10.2025", "11.2025"]
 ```
 
 ## Notes
