@@ -12,16 +12,21 @@ This integration pulls [HEP ODS Mjerenje](https://mjerenje.hep.hr/)'s API 15‑m
 ## 1. Easy Mode (HACS)
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+Installation of HACS (Recommended)
 
-1. Open HACS and search for `HEP ODS Mjerenje`
-1. Click `Download`
-1. Continue to [Configuration](#configuration)
+1. Install HACS if you don't have it already
+2. Open HACS in Home Assistant
+3. Go to "Integrations" section
+4. Click ... button on top right and in menu select "Custom repositories"
+5. Add repository **https://github.com/igkovace/hep-ods-mjerenje** and select category "Integration"
+6. Search for "hep_mjerenje" and install it
+7. Restart Home Assistant
 
 ## 2. Manual Installation
 
 Install it as you would do with any Home Assistant custom component:
 
-1. Download the `custom_components` folder from this repository.
+1. Download the [zip](https://github.com/igkovace/hep-ods-mjerenje/archive/refs/heads/master.zip) and extract it
 2. Copy the `hep_mjerenje` directory within the `custom_components` directory of your Home Assistant installation. The `custom_components` directory resides within the Home Assistant configuration directory.
 
 **Note**: If the custom_components directory does not exist, it needs to be created.
