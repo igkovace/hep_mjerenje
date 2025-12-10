@@ -90,10 +90,10 @@ logger:
     custom_components.hep_mjerenje.coordinator: debug
 ```
 
-##Issues
+## Issues
 To be concluded
 
-##Changelog
+## Changelog
 ### 0.2.7
 - **Feature**: Added option **`sync_total_to_ytd`** (default ON). Coordinator ensures lifetime totals are **never smaller than YTD** by bumping them up when needed.
 - **Stability**: Manifest version is PEP 440 compliant.
