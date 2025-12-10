@@ -94,42 +94,50 @@ logger:
 To be concluded
 
 ## Changelog
-### 0.2.7
+### v0.2.7
 - **Feature**: Added option **`sync_total_to_ytd`** (default ON). Coordinator ensures lifetime totals are **never smaller than YTD** by bumping them up when needed.
 - **Stability**: Manifest version is PEP 440 compliant.
 
-### 0.2.6
+### v0.2.6
 - Repacked all modules with full content (no placeholders), including 0.2.6 features.
 - **Dedup**: Tracks imported months and skips duplicates automatically; new `clear_import_cache` and `force` flags.
 
-### 0.2.5
+### v0.2.5
 - Added `import_years` service.
 
-### 0.2.4
+### v0.2.4
 - Setup-order fix: reset/backfill before first refresh.
 - **Total=lifetime**, **Year=YTD**; added `reset_on_install` option.
-- 
-## HEP ODS Mjerenje – v0.2.1
-### Hotfixes
+
+### v0.2.3
+- **Fix**: Persistent totals file now namespaced per config entry (`OIB_OMM`) to prevent inflated totals after reinstall.
+- **Feature**: Added `reset_totals` service to clear persistent totals.
+- **UX**: `Backfill N months` moved to the initial setup form (login screen) for better user control.
+- **i18n**: Added translations folder with English (`en.json`) and Croatian (`hr.json`).
+- **Docs**: Restored README with version changes.
+  
+### v0.2.2
+- **Fix**: Config flow handler loads reliably via lazy imports (prevents `Invalid handler specified` error).
+- **Fix**: Exporter newline literal corrected; InfluxDB line protocol payload valid.
+- **Fix**: `manifest.json` converted to valid JSON; version bumped.
+- **Improve**: Sensors use OMM in `unique_id` to avoid collisions.
+
+### v0.2.1
+#### Hotfixes
 - **Fix ImportError/SyntaxError in exporter.py**: safe quoting and using HA aiohttp session to avoid event loop warnings.
 - Influx exporter now uses HA session (`aiohttp_client`) and avoids creating a new client.
-### Still includes v0.2.0 features
-- Robust parser with auto-fallback, diagnostics, persistent totals, auto-backfill, optional Influx export. HEP ODS Mjerenje – v0.2.1
-### Hotfixes
-- **Fix ImportError/SyntaxError in exporter.py**: safe quoting and using HA aiohttp session to avoid event loop warnings.
-- Influx exporter now uses HA session (`aiohttp_client`) and avoids creating a new client.
-### Still includes v0.2.0 features
+#### Still includes v0.2.0 features
 - Robust parser with auto-fallback, diagnostics, persistent totals, auto-backfill, optional Influx export.
 
-## HEP ODS Mjerenje – v0.2.0
-### Fixes
+### v0.2.0
+#### Fixes
 - **Month/Previous Month empty**: parser now **falls back to auto-detect columns** if provided indices yield 0 rows (header lookup for `Datum`, `Vrijeme`, `…energija`/`…snaga`, and a numeric heuristic that avoids `Status`). `diag_fallback_used` attribute shows when fallback triggered.
 - Diagnostics expanded: `diag_current_month_rows`, `diag_prev_month_rows`, `diag_skipped_months`.
-### New
+#### New
 - **Persistent totals** using HA `Store` — `Consumption Total` and `Export Total` **keep growing across restarts and rollovers**. On first run (no store) totals initialize from **YTD**; auto-backfill then adds historical months.
 - **Auto-backfill** (first setup): imports last **N** complete months (default 12), skipping months the portal doesn’t have yet (404-safe).
 - **InfluxDB v2 exporter** (optional): push **15-min**, **daily**, and **monthly** series to Influx for Grafana. Configure in Options (`influx_enabled`, `influx_url`, `influx_token`, `influx_org`, `influx_bucket`).
-### Defaults (XLS layout)
+#### Defaults (XLS layout)
 - `date_col=1`, `time_col=2`, `kw_col=7`, `date_format=%d.%m.%Y`, `time_format=%H:%M:%S`, `value_is_energy=true`.
 
 ## License
