@@ -67,7 +67,12 @@ After a correct installation, the configuration directory should look like the f
 - `sensor.hep_consumption_today`
 - `sensor.hep_export_today`
 
-## Service: `hep_mjerenje.import_history`
+## Service
+- `hep_mjerenje.import_history` (months, optional `force`)
+- `hep_mjerenje.import_years` (years, optional `force`)
+- `hep_mjerenje.reset_totals`
+- `hep_mjerenje.clear_import_cache`
+
 Backfill totals with a list of months, e.g.:
 ```
 service: hep_mjerenje.import_history
