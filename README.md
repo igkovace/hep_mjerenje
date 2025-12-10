@@ -58,7 +58,8 @@ After a correct installation, the configuration directory should look like the f
 4. Enter your HEP ODS Mjerenje account **Username**, **Password**, **OIB**, **OMM**, then click Submit
 5. *(Optional)* After configuration, you can change settings by clicking **Configure** on the integration
 
-# Usage
+# Sensors
+- **Total** (lifetime), **Year** (YTD), **This Month**, **Previous Month**, **Yesterday**, Diagnostics
 ## Entities
 - `sensor.hep_consumption_total_kwh` (total_increasing)
 - `sensor.hep_export_total_kwh` (total_increasing)
@@ -80,10 +81,14 @@ data:
   months: ["09.2025, "10.2025", "11.2025"]
 ```
 
-## Notes
-- Power (kW) values are converted to energy (kWh) by dividing by 4 for each 15‑minute interval.
-- The integration uses the portal endpoints observed in community scripts and may break if HEP changes them. Handle with care
+## Options (key ones)
+- Backfill N months
+- Reset totals on first install
+- **Sync lifetime total to YTD** (new in v0.2.7)
+- Parser indices, formats; value unit toggle; Influx export toggles and settings
 
+## Notes
+- The integration uses the portal endpoints observed in community scripts and may break if HEP changes them. Handle with care
 
 ## Debug Logging
 To enable debug logging, add this to your configuration.yaml:
@@ -145,6 +150,76 @@ To be concluded
 - **InfluxDB v2 exporter** (optional): push **15-min**, **daily**, and **monthly** series to Influx for Grafana. Configure in Options (`influx_enabled`, `influx_url`, `influx_token`, `influx_org`, `influx_bucket`).
 #### Defaults (XLS layout)
 - `date_col=1`, `time_col=2`, `kw_col=7`, `date_format=%d.%m.%Y`, `time_format=%H:%M:%S`, `value_is_energy=true`.
+
+### v0.1.10
+#### Fixes
+- **Graceful 404 handling**: if a month endpoint returns **404 Not Found**, the integration **skips that month** and continues. This applies to:
+- Current/previous month
+- **YTD** aggregation
+- **Auto-backfill** and manual `import_history`
+- Diagnostics attribute **`diag_skipped_months`** lists skipped months (comma-separated) for visibility.
+#### Behavior (kept from v0.1.9)
+- Daily = **Yesterday** (naming + calculation).
+- Sensor names simplified (no "HEP" prefix).
+- Defaults for HEP XLS (`date_col=1`, `time_col=2`, `kw_col=7`, `value_is_energy=true`).
+- Auto-backfill last **N** months on first setup (default 12).
+
+### v0.1.9
+#### What’s new
+- **Sensor names simplified** (no "HEP" prefix) and **daily sensors explicitly show *Yesterday***.
+- New sensors: **Consumption/Export Previous Month**, **Consumption/Export Year (YTD)**.
+- Defaults pre-set for HEP XLS: `date_col=1`, `time_col=2`, `kw_col=7`, `value_is_energy=True`, `date_format=%d.%m.%Y`, `time_format=%H:%M:%S`.
+- **Auto-backfill**: on first setup, automatically imports the last **N** complete months (default 12). You can change N in Options.
+#### Entities
+- Consumption Total (total_increasing)
+- Export Total (total_increasing)
+- Consumption This Month, Export This Month
+- Consumption Yesterday, Export Yesterday
+- Consumption Previous Month, Export Previous Month
+- Consumption Year, Export Year
+- Diagnostics (rows parsed and helper attributes)
+
+### v0.1.8
+#### Changes
+- **Today = Yesterday** option (enabled by default): daily sensors show yesterday because the HEP portal publishes a day's curve only after the day closes.
+- **Robust parsing** for Date+Time + value column selection; avoids picking the last "Status" column; adds preferred energy when two numeric columns exist.
+- Options UI extended.
+
+### v0.1.7
+#### New
+- Supports **separate Date + Time columns** (e.g., `Datum` and `Vrijeme`) and combines them for timestamps.
+- Option to treat selected value column as **already energy (kWh)** so no kW→kWh conversion is applied.
+#### Options
+- `date_column_index` (default -1 = not used)
+- `time_column_index` (default 0)
+- `kw_column_index` (default -1 = last numeric column)
+- `date_format` (default `%d.%m.%Y`)
+- `time_format` (default `%H:%M:%S`)
+- `value_is_energy` (default false)
+
+Device hierarchy retained: Parent **HEP ODS Account** → Child **HEP <OMM>** with entities.
+
+### v0.1.6
+#### New: Parser Options & Diagnostics
+- Set **Time column index**, **kW column index**, and **Time format** in the integration **Options**.
+- New `sensor.hep_diagnostics` shows parsed row count and last timestamps.
+#### Device hierarchy
+- Parent device: **HEP ODS Account**
+- Child device: **HEP <OMM>** with energy entities
+
+### v0.1.5
+#### Now with **device hierarchy**:
+- Parent device: **HEP ODS Account**
+- Child device per OMM: **HEP <OMM>** with all 6 energy entities
+
+### v0.1.4
+
+### v0.1.3
+
+### v0.1.2
+
+### v0.1.1
+
 
 ## License
 This project is licensed under the MIT License.
