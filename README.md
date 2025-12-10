@@ -219,7 +219,7 @@ Device hierarchy retained: Parent **HEP ODS Account** → Child **HEP <OMM>** wi
 - Minor fixes
 
 ### v0.1.2
-- Minor fixes
+- Minor fixes and API login adjustments
 
 ### v0.1.1
 - First initial release
