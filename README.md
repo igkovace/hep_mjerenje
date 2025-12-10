@@ -102,7 +102,7 @@ logger:
 ```
 
 ## Issues
-To be concluded
+- To be concluded
 
 ## Changelog
 ### v0.2.8
