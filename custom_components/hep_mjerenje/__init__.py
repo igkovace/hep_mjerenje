@@ -1,21 +1,19 @@
-
 from __future__ import annotations
+import logging
 from datetime import datetime, timedelta
-
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.helpers import aiohttp_client
 from homeassistant.helpers.device_registry import async_get as async_get_device_registry
-
 from .const import (
     DOMAIN, CONF_USERNAME, CONF_PASSWORD, CONF_OIB, CONF_OMM, SERVICE_IMPORT_HISTORY,
     CONF_BACKFILL_N_MONTHS, CONF_BACKFILL_DONE,
     CONF_RESET_ON_INSTALL,
 )
 
+_LOGGER = logging.getLogger(__name__)
 PLATFORMS = [Platform.SENSOR]
-
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     from .api import HepMjerenjeClient
@@ -23,7 +21,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
     session = aiohttp_client.async_get_clientsession(hass)
     data = entry.data
-
     client = HepMjerenjeClient(
         username=data[CONF_USERNAME],
         password=data[CONF_PASSWORD],
@@ -31,7 +28,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
         omm=data[CONF_OMM],
         session=session,
     )
-
     store_key = entry.unique_id or f"{data[CONF_OIB]}_{data[CONF_OMM]}"
     coordinator = HepCoordinator(hass, client, data[CONF_OMM], store_key=store_key)
     coordinator.set_options(entry.options)
@@ -41,23 +37,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     if bool(opts.get(CONF_RESET_ON_INSTALL, True)) and not opts.get(CONF_BACKFILL_DONE, False):
         try:
             await coordinator.reset_persist()
-        except Exception:
-            pass
+        except Exception as ex:
+            _LOGGER.warning("Reset persist failed: %s", ex)
 
-    if not opts.get(CONF_BACKFILL_DONE, False):
-        n = int(opts.get(CONF_BACKFILL_N_MONTHS, 12))
-        months = []
-        dt = datetime.now().replace(day=1) - timedelta(days=1)
-        for _ in range(n):
-            months.append(dt.strftime("%m.%Y"))
-            dt = (dt.replace(day=1) - timedelta(days=1))
-        try:
-            await coordinator.import_history(list(reversed(months)))
-            opts[CONF_BACKFILL_DONE] = True
-            hass.config_entries.async_update_entry(entry, options=opts)
-        except Exception:
-            pass
-
+    # No backfill_n_months in login; first refresh happens immediately
     await coordinator.async_config_entry_first_refresh()
 
     # Device hierarchy
@@ -112,7 +95,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
-
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     unloaded = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)

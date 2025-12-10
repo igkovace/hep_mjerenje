@@ -1,4 +1,3 @@
-
 import_history:
   name: Import history
   description: Backfill totals by fetching specified months (MM.YYYY list)
