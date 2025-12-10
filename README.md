@@ -81,16 +81,35 @@ data:
 
 ## Debug Logging
 To enable debug logging, add this to your configuration.yaml:
-
+```
 logger:
   default: warning
   logs:
     custom_components.hep_mjerenje: debug
     custom_components.hep_mjerenje.api: debug
     custom_components.hep_mjerenje.coordinator: debug
+```
 
 ##Issues
 To be concluded
+
+##Changelog
+### 0.2.7
+- **Feature**: Added option **`sync_total_to_ytd`** (default ON). Coordinator ensures lifetime totals are **never smaller than YTD** by bumping them up when needed.
+- **Stability**: Manifest version is PEP 440 compliant.
+
+### 0.2.6a
+- Repacked all modules with full content (no placeholders), including 0.2.6 features.
+
+### 0.2.6
+- **Dedup**: Tracks imported months and skips duplicates automatically; new `clear_import_cache` and `force` flags.
+
+### 0.2.5
+- Added `import_years` service.
+
+### 0.2.4
+- Setup-order fix: reset/backfill before first refresh.
+- **Total=lifetime**, **Year=YTD**; added `reset_on_install` option.
 
 ## License
 This project is licensed under the MIT License.
