@@ -105,6 +105,17 @@ logger:
 To be concluded
 
 ## Changelog
+### v0.2.8
+- Advanced options added (Options only): `update_interval_minutes`, `request_timeout`, `max_concurrency`.
+- Parser defaults fixed & removed from Options: indices 1/2/7; date `%d.%m.%Y`; time `%H:%M:%S`; values are kWh.
+- Login screen cleanup: removed `backfill_n_months` (available in Options + service).
+- Stability: coordinator lock; timezone-safe timestamps; YTD cache once/day.
+- Resilience: per-request timeout; 401 re-login; capped retry/backoff for transient errors.
+- Sensors: HA enum `SensorStateClass`; Diagnostics unique per OMM.
+- Influx: write timeout & payload preview on error.
+- Translations: full strings for config & options + regional aliases (`en-GB`, `en-US`, `hr-HR`).
+- Services UI: `object` selector for `months` / `years`.
+
 ### v0.2.7
 - **Feature**: Added option **`sync_total_to_ytd`** (default ON). Coordinator ensures lifetime totals are **never smaller than YTD** by bumping them up when needed.
 - **Stability**: Manifest version is PEP 440 compliant.
