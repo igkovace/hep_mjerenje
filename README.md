@@ -213,13 +213,16 @@ Device hierarchy retained: Parent **HEP ODS Account** → Child **HEP <OMM>** wi
 - Child device per OMM: **HEP <OMM>** with all 6 energy entities
 
 ### v0.1.4
+- Minor fixes
 
 ### v0.1.3
+- Minor fixes
 
 ### v0.1.2
+- Minor fixes
 
 ### v0.1.1
-
+- First initial release
 
 ## License
 This project is licensed under the MIT License.
